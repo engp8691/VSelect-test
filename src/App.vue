@@ -3,13 +3,14 @@
     <InfiniteScroll :allOptions="countries" :selectedValue="1916" placeHolder="Year" />
     <InfiniteScroll :allOptions="months" selectedValue="July" placeHolder="Month" />
     <InfiniteScroll :allOptions="days" :selectedValue="23" placeHolder="Day" />
-    <CountrySelect />
+    <WithVueSelect  :allOptions="allCountries" :currentValue="savedCountry" placeHolder="Country" />
   </div>
 </template>
 
 <script>
 import InfiniteScroll from './components/InfiniteScroll.vue';
-import CountrySelect from './components/CountrySelect.vue';
+import WithVueSelect from './components/WithVueSelect.vue';
+import countryCodes from "./components/data/countryCodes";
 
 export default {
   computed: {
@@ -42,12 +43,18 @@ export default {
         days.push(`${i}`);
       }      
       return days;
+    },
+    allCountries(){
+      return countryCodes;
+    },
+    savedCountry(){
+      return {value: "AG", label: "Antigua and Barbuda"};
     }
   },
   name: 'App',
   components: {
     InfiniteScroll,
-    CountrySelect,
+    WithVueSelect,
   }
 }
 </script>
