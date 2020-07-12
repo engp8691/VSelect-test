@@ -3,11 +3,13 @@
     <InfiniteScroll :allOptions="countries" :selectedValue="1916" placeHolder="Year" />
     <InfiniteScroll :allOptions="months" selectedValue="July" placeHolder="Month" />
     <InfiniteScroll :allOptions="days" :selectedValue="23" placeHolder="Day" />
+    <CountrySelect />
   </div>
 </template>
 
 <script>
 import InfiniteScroll from './components/InfiniteScroll.vue';
+import CountrySelect from './components/CountrySelect.vue';
 
 export default {
   computed: {
@@ -44,7 +46,8 @@ export default {
   },
   name: 'App',
   components: {
-    InfiniteScroll
+    InfiniteScroll,
+    CountrySelect,
   }
 }
 </script>
