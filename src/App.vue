@@ -1,9 +1,32 @@
 <template>
   <div id="app">
-    <WithVueSelect  :allOptions="years" :currentValue="savedYear" placeHolder="Year" />
-    <WithVueSelect  :allOptions="months" :currentValue="savedMonth" placeHolder="Month" />
-    <WithVueSelect  :allOptions="days" :currentValue="savedDay" placeHolder="Day" />
-    <WithVueSelect  :allOptions="allCountries" :currentValue="savedCountry" placeHolder="Country" />
+    <WithVueSelect      
+      :options="years"
+      :currentValue="savedYear"
+      placeHolder="Year"
+      @onSelect="onSelect"
+    />
+
+    <WithVueSelect      
+      :options="months"
+      :currentValue="savedMonth"
+      placeHolder="Month"
+      @onSelect="onSelect"
+    />
+
+    <WithVueSelect      
+      :options="days"
+      :currentValue="savedDay"
+      placeHolder="Day"
+      @onSelect="onSelect"
+    />
+
+    <WithVueSelect       
+      :options="allCountries"
+      :currentValue="savedCountry"
+      placeHolder="Country"
+      @onSelect="onSelect" 
+    />
   </div>
 </template>
 
@@ -12,6 +35,13 @@ import WithVueSelect from './components/WithVueSelect.vue';
 import countryCodes from "./components/data/countryCodes";
 
 export default {
+  name: 'App',
+  components: {
+    WithVueSelect,
+  },
+  data: () => ({
+    args: null,
+  }),
   computed: {
     years(){
       const years = [];
@@ -59,10 +89,11 @@ export default {
       return {value: "AG", label: "Antigua and Barbuda"};
     }
   },
-  name: 'App',
-  components: {
-    WithVueSelect,
-  }
+  methods: {
+    onSelect: function (value) {
+      console.log(value)
+    }
+  },
 }
 </script>
 
